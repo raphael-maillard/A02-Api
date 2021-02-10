@@ -35,7 +35,7 @@ class Customer
     private $lastname;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $CreatedAt;
 
@@ -46,13 +46,14 @@ class Customer
 
     /**
      * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="customers")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $book;
 
     public function __construct()
     {
         $this->book = new ArrayCollection();
-       $this->setCreatedAt = new DateTime('now');
+        $this->setCreatedAt = new DateTime('now');
     }
 
     public function getId(): ?int

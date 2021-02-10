@@ -58,6 +58,7 @@ class Book
 
     /**
      * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="book")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $customers;
 
