@@ -7,10 +7,14 @@ use App\Repository\BookRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"book:read"}},
+ *     denormalizationContext={"groups"={"book:write"}}
+ * )
  */
 class Book
 {
@@ -23,21 +27,25 @@ class Book
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"customer:read", "book:read","book:write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"customer:read", "book:read","book:write"})
      */
     private $author;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"book:read","book:write"})
      */
     private $quantity;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"customer:read", "book:read","book:write"})
      */
     private $category;
 
@@ -48,17 +56,20 @@ class Book
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"customer:read", "book:read","book:write"})
      */
     private $resume;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $CreatedAt;
 
     /**
      * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="book")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups({"book:read"})
+     * 
      */
     private $customers;
 
