@@ -80,6 +80,7 @@ class Book
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="ISBN ne peut pas être vide")
      */
     private $isbn;
 
