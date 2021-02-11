@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /** 
  * @ApiResource(
@@ -30,12 +31,16 @@ class Customer
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"customer:read", "customer:write", "book:read"})
+     * @Assert\NotBlank(message="Le nom ne peut pas être vide")
+     * @Assert\Length(min=3, minMessage="Le nom ne doit comporter au miniumum 3 caractères.", max = 255, maxMessage="Le nom doit comporter au maximum 255 caractères.")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"customer:read", "customer:write", "book:read"})
+     * @Assert\NotBlank(message="Le prénom ne peut pas être vide")
+     * @Assert\Length(min=3, minMessage="Le prénom ne doit comporter au miniumum 3 caractères.", max = 255, maxMessage="Le prénom doit comporter au maximum 255 caractères.")
      */
     private $lastname;
 

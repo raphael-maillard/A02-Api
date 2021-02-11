@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
@@ -28,15 +29,18 @@ class Book
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"customer:read", "book:read","book:write"})
+     * @Assert\NotBlank(message="Le nom ne peut pas être vide")
+     * @Assert\Length(min=3, minMessage="Le nom ne doit comporter au miniumum 3 caractères.", max = 255, maxMessage="Le nom doit comporter au maximum 255 caractères.")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"customer:read", "book:read","book:write"})
+     * @Assert\NotBlank(message="L'auteur ne peut pas être vide")
+     * @Assert\Length(min=3, minMessage="L'auteur doit comporter au miniumum 3 caractères.", max = 255, maxMessage="L'auteur doit comporter au maximum 255 caractères.")
      */
     private $author;
-
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"book:read","book:write"})
@@ -46,6 +50,7 @@ class Book
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"customer:read", "book:read","book:write"})
+     * @Assert\NotBlank(message="La catégorie ne peut pas être vide")
      */
     private $category;
 
@@ -57,6 +62,7 @@ class Book
     /**
      * @ORM\Column(type="text")
      * @Groups({"customer:read", "book:read","book:write"})
+     * @Assert\NotBlank(message="Un résumé est nécessaire")
      */
     private $resume;
 
