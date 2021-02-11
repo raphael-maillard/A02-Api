@@ -60,13 +60,14 @@ class Customer
      * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="customers")
      * @ORM\JoinColumn(nullable=true)
      * @Groups({"customer:read", "customer:write"})
+     * @Assert\NotBlank(message="Le livre est obligatoire")
      */
     private $book;
 
     public function __construct()
     {
         $this->book = new ArrayCollection();
-        $this->setCreatedAt = new DateTime('now');
+        $this->setCreatedAt = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
     }
 
     public function getId(): ?int

@@ -78,6 +78,11 @@ class Book
      */
     private $customers;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $isbn;
+
     public function __construct()
     {
         $this->customers = new ArrayCollection();
@@ -195,6 +200,18 @@ class Book
         if ($this->customers->removeElement($customer)) {
             $customer->removeBook($this);
         }
+
+        return $this;
+    }
+
+    public function getIsbn(): ?string
+    {
+        return $this->isbn;
+    }
+
+    public function setIsbn(?string $isbn): self
+    {
+        $this->isbn = $isbn;
 
         return $this;
     }
