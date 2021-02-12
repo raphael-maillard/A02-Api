@@ -74,7 +74,7 @@ class Book
     /**
      * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="book")
      * @ORM\JoinColumn(nullable=true)
-     * @Groups({"book:read"})
+     * @Groups({"book:read", "book:write"})
      */
     private $customers;
 

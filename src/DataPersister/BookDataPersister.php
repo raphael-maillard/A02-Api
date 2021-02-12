@@ -33,6 +33,8 @@ class BookDataPersister implements ContextAwareDataPersisterInterface
         $this->_entityManager->persist($data);
         $this->_entityManager->flush();
 
+        // $data->addCustomer()
+
     }
 
     /**

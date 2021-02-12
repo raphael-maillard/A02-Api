@@ -15,7 +15,7 @@ class BookFixtures extends Fixture
         for ($i=0; $i <=10; $i++)
         {
             $book = new Book;
-            $book->setName($faker->title());
+            $book->setName($faker->sentence($nbWords = 3, $variableNbWords = true));
             $book->setAuthor($faker->name());
             $book->setIsbn($faker->isbn13());
             $book->setQuantity($faker->randomDigitNotNull());
