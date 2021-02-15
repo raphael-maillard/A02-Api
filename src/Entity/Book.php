@@ -64,7 +64,7 @@ class Book
      * @Groups({"customer:read", "book:read","book:write"})
      * @Assert\NotBlank(message="Un résumé est nécessaire")
      */
-    private $resume;
+    private $summary;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -154,14 +154,14 @@ class Book
         return $this;
     }
 
-    public function getResume(): ?string
+    public function getSummary(): ?string
     {
-        return $this->resume;
+        return $this->summary;
     }
 
-    public function setResume(string $resume): self
+    public function setSummary(string $summary): self
     {
-        $this->resume = $resume;
+        $this->summary = $summary;
 
         return $this;
     }

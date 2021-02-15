@@ -21,7 +21,7 @@ class BookFixtures extends Fixture
             $book->setQuantity($faker->randomDigitNotNull());
             $book->setCategory($faker->word());
             $book->setImage($faker->imageUrl());
-            $book->setResume($faker->text());
+            $book->setSummary($faker->text());
 
 
             $manager->persist($book);
