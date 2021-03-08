@@ -21,7 +21,7 @@ class BookFixtures extends Fixture
             $book->setQuantity($faker->randomDigitNotNull());
             $book->setCategory($faker->word());
             // $book->setImage($faker->imageUrl($width=640, $height=480, 'cats', true, 'Faker'));
-            $book->setImage("http://lorempixel.com/800/400/cats/Faker/");
+            $book->setImage("https://loremflickr.com/300/450/book");
             $book->setSummary($faker->text());
 
 
