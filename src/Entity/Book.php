@@ -56,6 +56,7 @@ class Book
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"customer:read", "book:read","book:write"})
      */
     private $image;
 

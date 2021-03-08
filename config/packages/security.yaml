@@ -19,7 +19,7 @@ security:
             pattern : ^/api/users
             anonymous: true
             stateless: true
-            # We accept just POST - we can do GET
+            # We accept just POST - we can't do GET
             methods: [POST]
         # We add the parameter for the Api Palteform login with lexik/jwt
         # Add route 
@@ -55,7 +55,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [GET, PUT, DELETE] }
-        - { path: ^/api/books,       roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/api/customers,       roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [GET, PUT, DELETE] }
+        # - { path: ^/api/books, roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/api/customers, roles: IS_AUTHENTICATED_FULLY }
         
